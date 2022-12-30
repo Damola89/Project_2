@@ -1,57 +1,66 @@
-Installing the Nginx Web Server
+I started by updating the server's package index using command `sudo apt update`
 
-I started by updating my server's package index using `sudo apt update` 
+![apt update](./images%202/sudo_apt_update.png)
 
-![update apt](./images%202/Update_server_index.png)
+Nginx was installed on the server using `sudo apt install nginx`
 
-Proceeded to install Nginx using `sudo apt install nginx`
+![nginx installed](./images%202/nginx_installed_server.png)
 
-![Nginx install](./images%202/install_nginx.png)
+I ran the command `sudo systemctl status nginx` to verify that nginx was successfully installed
 
-To verify that nginx was succeefully installed. I seached using `sudo systemctl status nginx`
+![nginx test](./images%202/nginx_test.png)
 
-![Nginx status](./images%202/server_status.png)
+I run `curl http://localhost:80` to check if i can locally access nginx on ubuntu
 
-to access the Nginx server on ubuntu, i used `curl http://localhost:80`
+![nginx_ubuntu](./images%202/nginx_local_port.png)
 
-![Nginx_Ubuntu](./images%202/nginx_ubuntu.png)
+I opened my browser to test if Nginx can respond to requests. 
 
-Tested Nginx on browser by using `http://44.211.80.194`
+![nginx_browser](./images%202/Nginx_browser_.png)
 
-![Nginx_browser](./images%202/nginx_browser.png)
+I installed Mysql using `sudo apt install mysql-server`
 
-Install mysql DBMS for starage using `sudo apt install mysql-server`
+![install_mysql_server](./images%202/install_mysql_server.png)
 
-![mysql_install](./images%202/mysql_install.png)
+I logged into mysql console using `sudo mysql`
 
-log into mysql `sudo mysql`
+![mysql_login](./images%202/sudo_mysql_login.png)
 
-![mysql_login](./images%202/mysql_login.png)
+I set a password for the root user using mysql_native_password as default authentication method. After that, I exited mysql.
 
-Defined user's password and started interactive script using `sudo mysql_secure_installation`
+Started the interactive script by running `sudo mysql_secure_installation`
 
-![mysql_installation](./images%202/mysql_interactive_script.png)
+![mysql_interactive](./images%202/mysql_interactive_script_secure.png)
 
-logged into mysql console using `sudo mysql -p`
+I tested to see if I am able to login into mysql console using `sudo mysql -p`
 
-![mysql_login](./images%202/mysql%20console_login.png)
+![mysql_login_test](./images%202/mysql_login_test.png)
 
-Php-fpm and php-mysql were installed on the nginx server using `sudo apt install php-fpm php-mysql`
+Installed php, php-fpm and php-mysql using `sudo apt install php-fpm php-mysql`
 
-![php_fpm php_mysql](./images%202/php_fpm%20php_mysql.png)
+![install_php-fpm_php_mysql](./images%202/install_php_fpm_php_mysql.png)
 
-I updated the server by using command `sudo apt update`
+To use PHP processor on Nginx, i started by creating a directory structure on /var/www/html using `sudo mkdir /var/www/projectLEMP`
 
-![server update](./images%202/server_update.png)
+I thereafter assigned ownership of the directory using `sudo chown -R $USER:$USER /var/www/projectLEMP`
 
-I installed nginx using `sudo apt install nginx`
+I then opened a new configuration file using `sudo nano /etc/nginx/sites-available/projectLEMP`
 
-![nginx install](./images%202/nginx_installed.png)
+Added the bare-bones configuration to the blank file.
 
-I verified to know if nginx was successfully installed using `sudo systemctl status nginx`
+I activated the configuration by linking to the configuration file from nginx sites-enabled directory using `sudo ls -s /etc/nginx/sites-available/projectLEMP/etc/nginx/sites-enabled/`
+Tested the configuration for syntax errors using `sudo nginx -t`
 
-![nginx_ubuntu](./images%202/nginx_ubuntu.png)
+![nginx test](./images%202/nginx_conf_test.png)
 
-I also tested nginx locally on ubuntu using `curl http://localhost:80`
+I disabled default nginx host using `sudo unlink /etc/nginx/sites-enabled/default`
 
-![nginx_ubuntu](./images%202/nginx_test_ubuntu.png)
+I reloaded nginx using `sudo systemctl reload nginx`
+
+I thereafter created index.html file.
+
+![nginx reload](./images%202/disable_nginx.png)
+
+I tested the public IP using browser.
+
+![public IP](./images%202/public_IP.png)
