@@ -64,3 +64,38 @@ I thereafter created index.html file.
 I tested the public IP using browser.
 
 ![public IP](./images%202/public_IP.png)
+
+The next step is to create a test PHP file in my document root using `sudo nano /var/www/projectLEMP/info.php`
+
+I thereafter typed and pasted `<?php
+phpinfo();`
+
+I accessed the page by browsing my public ip/info.php
+
+![php_page](./images%202/php_page_browser.png)
+
+To create a database, i connected to the MySQL console `sudo mysql`
+
+I thereafter created a database by running `CREATE DATABASE 'example_database';`
+
+I also replaced the native password with a secure password. `CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+`
+
+I also gave user permission using `GRANT ALL ON example_database.* TO 'example_user'@'%';`
+
+I also tested new user permission using `mysql -u example_user -p`
+
+After logging in to MySQL console, I confimed access to the database `SHOW DATABASES;`
+
+![mysql_Database](./images%202/mysql_database.png)
+
+I also created a test table named todo_list from the MySQL console. I thereafter inserted a few rows of content in the test table.
+I confirmed that the data was saved successfully `SELECT * FROM example_database.todo_list;`
+
+![mysql_Database_todo_list](./images%202/mysql_todo_list.png)
+
+I thereafter created a new php file using `nano /var/www/projectLEMP/todo_list.php`
+
+I thereafter copied and pasted the todo_list.php script. I saved and closed the file.
+
+I tested the php file using the public ip/todo_list.php
